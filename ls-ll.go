@@ -12,7 +12,6 @@ import (
 
 //------------- command ls -l -------------------------------------
 
-// pb avec sym link et le total
 
 func l(path string, files []string) ([][]string, int64) {
 	var total int64
@@ -29,7 +28,6 @@ func l(path string, files []string) ([][]string, int64) {
 		dir, _ := os.ReadDir(path)
 		for _, entry := range dir {
 			array, _ := lfile2(entry, path)
-			// total += tot
 			result = append(result, array)
 		}
 	} else {
@@ -64,7 +62,6 @@ func lfile2(entry fs.DirEntry, path string) ([]string, int64) {
 	// Parcourir les informations sur les fichiers
 	var result []string
 	var total int64
-	// nlink := uint64(0)
 
 	f1, err := entry.Info()
 	if err != nil {
@@ -156,7 +153,6 @@ func lfile2(entry fs.DirEntry, path string) ([]string, int64) {
 			fmt.Println(err)
 		}
 
-		// total += info.Size()
 		result = append(result, entry.Name()+" -> "+realPath)
 	} else {
 		result = append(result, entry.Name())
@@ -192,8 +188,6 @@ func lfile(paths string, pathverif bool) ([]string, int64) {
 
 	sys := fi.Sys().(*syscall.Stat_t)
 	user, _ := user.LookupId(strconv.Itoa(int(sys.Uid)))
-
-	// owner, _ := getFileOwner(temp)
 
 	info, err := os.Lstat(paths)
 	if err != nil {

@@ -8,7 +8,6 @@ import (
 )
 
 func R(path string) (map[string][]string, []string) {
-	// reussi a trier
 	temporder := tempR(path)
 	sortedMap := make(map[string][]string)
 	var result []string
@@ -21,7 +20,6 @@ func R(path string) (map[string][]string, []string) {
 	Sort(att)
 
 	if lst {
-		// var temp [][]string
 		var last []string
 		for key, value := range temporder {
 			temp := reverseStringSlice(t(value, key))
@@ -100,7 +98,6 @@ func tempR(path string) map[string][]string {
 
 		contents = Sort(contents)
 
-		// sort.Strings(contents) // Tri des noms de fichiers et de dossiers
 		alldir[dirPath] = contents
 	}
 
@@ -120,7 +117,7 @@ func reverseStringSlice(input []string) []string {
 	return reversed
 }
 
-// t en es a la, tu tri les dossiers par ordre de la base et chronologique-----------------------------------------------------------------------------------------------
+
 func customSort(arr []string) []string {
 	// Crée une carte pour regrouper les chaînes par nombre de "/".
 	groups := make(map[int][]string)
@@ -161,15 +158,6 @@ func CombineStringsFromMap(inputMap map[int][]string) []string {
 	return combinedStrings
 }
 
-func sortMapKeys(m map[string][]string) []string {
-	keys := make([]string, 0, len(m))
-	for key := range m {
-		keys = append(keys, key)
-	}
-	customStringSort(keys)
-	return keys
-}
-
 func bubbleSort(arr []int) {
 	n := len(arr)
 	for i := 0; i < n-1; i++ {
@@ -184,17 +172,6 @@ func bubbleSort(arr []int) {
 		// Si aucun échange n'a eu lieu dans cette passe, le tableau est trié
 		if !swapped {
 			break
-		}
-	}
-}
-
-func customStringSort(arr []string) {
-	n := len(arr)
-	for i := 0; i < n-1; i++ {
-		for j := 0; j < n-i-1; j++ {
-			if arr[j] > arr[j+1] {
-				arr[j], arr[j+1] = arr[j+1], arr[j]
-			}
 		}
 	}
 }
