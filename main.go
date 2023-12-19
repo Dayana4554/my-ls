@@ -178,7 +178,7 @@ func main() {
 							temp := strings.Split(r, "////")
 							newstr := ""
 							for _, r := range temp {
-								newstr += r 
+								newstr += r
 								if r != temp[len(temp)-1] {
 									newstr += "/"
 								}
@@ -186,7 +186,7 @@ func main() {
 							final += newstr + ":\n"
 						} else {
 							final += r + ":\n"
-						}	
+						}
 					}
 					affiche, total := l(r, a[r])
 					str := strconv.FormatInt(total, 10)

@@ -51,7 +51,6 @@ func t(infos []string, path string) []string {
 			}
 		}
 
-		// array, _ = sortByTime(array)
 		return array
 	}
 }

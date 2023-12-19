@@ -13,11 +13,7 @@ func a(existingPaths []string) [][]string {
 		for _, r := range existingPaths {
 			var temp []string
 			path, _ := getAbsolutePath(r)
-			/*if path[len(path)-1] == '/' {
-				path = path[:len(path)-1]
-			}*/
 			temp = append(temp, ".")
-			// uppath := getLastDirectory(path)
 			temp = append(temp, "..")
 
 			files := listContents(path)
@@ -39,6 +35,7 @@ func a(existingPaths []string) [][]string {
 func getAbsolutePath(directoryPath string) (string, error) {
 	if strings.HasPrefix(directoryPath, "/") {
 		// Le chemin est déjà absolu, le renvoyer tel quel
+
 		return directoryPath, nil
 	}
 
@@ -81,16 +78,6 @@ func listContents(path string) []string {
 	}
 
 	return contents
-}
-
-func getLastDirectory(path string) string {
-	segments := strings.Split(path, "/")
-	if len(segments) <= 1 {
-		return ""
-	}
-
-	lastSegment := segments[len(segments)-1]
-	return path[:strings.LastIndex(path, lastSegment)-1]
 }
 
 func getFileNameFromPath(path string) string {
